@@ -10,20 +10,6 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        darkTheme: {
-          primary: "#a700ff",
-          secondary: "#00c100",
-          accent: "#0057ff",
-          neutral: "#172537",
-          "base-100": "#182532",
-          info: "#5fcfff",
-          success: "#00e287",
-          warning: "#ff8200",
-          error: "#b92843",
-          body: {
-            "background-color": "#182532",
-          },
-        },
         lightTheme: {
           primary: "#0000ff",
           secondary: "#00ebff",
@@ -36,6 +22,20 @@ const config: Config = {
           error: "#e12250",
           body: {
             "background-color": "#fff7fd",
+          },
+        },
+        darkTheme: {
+          primary: "#a700ff",
+          secondary: "#00c100",
+          accent: "#0057ff",
+          neutral: "#172537",
+          "base-100": "#182532",
+          info: "#5fcfff",
+          success: "#00e287",
+          warning: "#ff8200",
+          error: "#b92843",
+          body: {
+            "background-color": "#182532",
           },
         },
       },
