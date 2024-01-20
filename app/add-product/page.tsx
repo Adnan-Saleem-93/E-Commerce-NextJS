@@ -4,15 +4,36 @@ type Props = {};
 
 const AddProductPage = (props: Props) => {
   return (
-    <div className="h-full w-full">
+    <div className="flex h-full w-full flex-col gap-y-3">
       <h1 className="text-lg font-bold tracking-wider">Add Product</h1>
 
-      <form>
+      <form className="grid w-1/2 grid-cols-2 gap-3">
         <input
           type="text"
-          placeholder="Type here"
-          className="input input-bordered input-primary w-full max-w-xs"
+          placeholder="Product Name"
+          className="input input-bordered input-secondary col-span-2"
         />
+        <textarea
+          className="textarea textarea-secondary col-span-2"
+          placeholder="Description"
+          rows={4}
+        ></textarea>
+        <input
+          type="number"
+          placeholder="Price"
+          className="input input-bordered input-secondary col-span-1 col-start-1"
+          min={0}
+        />
+
+        <button
+          className="btn btn-primary col-span-1 col-start-1 uppercase"
+          type="submit"
+        >
+          Create
+        </button>
+        <button className="btn col-span-1" type="button">
+          Cancel
+        </button>
       </form>
     </div>
   );

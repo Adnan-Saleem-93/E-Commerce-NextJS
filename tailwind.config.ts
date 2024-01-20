@@ -40,7 +40,6 @@ const config: Config = {
         },
       },
     ],
-    prefix: "tw-daisy-",
   },
 };
 export default config;
