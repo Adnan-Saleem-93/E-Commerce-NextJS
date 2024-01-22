@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const AddProductPage = (props: Props) => {
+const AddProductPage = () => {
   return (
     <div className="flex h-full w-full flex-col gap-y-3">
       <h1 className="text-lg font-bold tracking-wider">Add Product</h1>
@@ -22,7 +20,7 @@ const AddProductPage = (props: Props) => {
           type="number"
           placeholder="Price"
           className="input input-bordered input-secondary col-span-1 col-start-1"
-          min={0}
+          min={1}
         />
 
         <button
