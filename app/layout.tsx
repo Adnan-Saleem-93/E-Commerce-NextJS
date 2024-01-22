@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div
+        <main
           className="min-h-screen min-w-full bg-gray-300 p-4"
           data-theme="light"
         >
           {children}
-        </div>
+        </main>
       </body>
     </html>
   );

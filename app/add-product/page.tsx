@@ -1,9 +1,13 @@
+import CancelButton from "@/components/atoms/CancelButton";
+
 import React from "react";
 
 const AddProductPage = () => {
   return (
-    <div className="flex h-full w-full flex-col gap-y-3">
-      <h1 className="text-lg font-bold tracking-wider">Add Product</h1>
+    <section className="flex h-full w-full flex-col items-center justify-center gap-y-3">
+      <h1 className="text-lg font-bold uppercase tracking-wider text-blue-600">
+        Add Product
+      </h1>
 
       <form className="grid w-1/2 grid-cols-2 gap-3">
         <input
@@ -29,11 +33,9 @@ const AddProductPage = () => {
         >
           Create
         </button>
-        <button className="btn col-span-1" type="button">
-          Cancel
-        </button>
+        <CancelButton />
       </form>
-    </div>
+    </section>
   );
 };
 
