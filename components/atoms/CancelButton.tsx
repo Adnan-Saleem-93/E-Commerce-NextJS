@@ -1,17 +1,19 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import React, { useMemo } from "react";
 
-type Props = { onClick?: any };
+type Props = { onClick?: any; customClasses?: string };
 
-const CancelButton = ({ onClick = null }: Props) => {
-  const router = useRouter();
-  const clickAction = useMemo(
-    () => (onClick ? onClick : () => router.push("/")),
-    [onClick],
-  );
+const CancelButton = ({
+  onClick = () => redirect("/"),
+  customClasses = "",
+}: Props) => {
   return (
-    <button className="btn col-span-1" type="button" onClick={clickAction}>
+    <button
+      className={`btn btn-outline ${customClasses}`}
+      type="button"
+      onClick={onClick}
+    >
       Cancel
     </button>
   );
