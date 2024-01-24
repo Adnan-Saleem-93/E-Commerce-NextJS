@@ -1,6 +1,7 @@
 import CancelButton from "@/components/atoms/Buttons/CancelButton";
 import prisma from "../../utils/db/prisma";
 import { redirect } from "next/navigation";
+import FormSubmitButton from "@/components/atoms/Buttons/FormSubmitButton";
 
 export const metadata = {
   title: "Add Product | E-Commerce App",
@@ -71,12 +72,9 @@ const AddProductPage = () => {
           min={1}
         />
 
-        <button
-          className="btn btn-primary col-span-1 col-start-1 uppercase"
-          type="submit"
-        >
-          Add
-        </button>
+        <FormSubmitButton className="col-span-1 col-start-1 uppercase">
+          Add Product
+        </FormSubmitButton>
         <CancelButton customClasses="col-span-1" />
       </form>
     </section>
