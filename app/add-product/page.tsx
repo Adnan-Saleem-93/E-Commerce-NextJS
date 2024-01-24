@@ -1,4 +1,4 @@
-import CancelButton from "@/components/atoms/CancelButton";
+import CancelButton from "@/components/atoms/Buttons/CancelButton";
 import prisma from "../../utils/db/prisma";
 import { redirect } from "next/navigation";
 
