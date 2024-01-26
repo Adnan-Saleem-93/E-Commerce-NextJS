@@ -25,7 +25,7 @@ export default async function Home() {
           id="products-secondary"
           className="xs:grid-cols-1 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {products.map((product: Product, index: number) => {
+          {products.slice(1).map((product: Product, index: number) => {
             return (
               <ProductCard key={`product-${index + 1}`} product={product} />
             );

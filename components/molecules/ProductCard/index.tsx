@@ -20,13 +20,13 @@ const ProductCard = ({ product }: Props) => {
             alt={name.toLowerCase().replaceAll(" ", "-")}
             width={384}
             height={226.75}
-            className="w-full object-cover"
+            className="h-full max-h-80 min-h-80 w-full object-cover"
           />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
           {isNew && <p className="badge badge-warning text-white">NEW!</p>}
-          <p>{description}</p>
+          <p className="truncate">{description}</p>
           <div className="card-actions items-center justify-between">
             <PriceTag price={price} className="text-xl font-bold" />
             <button className="btn btn-primary">Buy Now</button>
