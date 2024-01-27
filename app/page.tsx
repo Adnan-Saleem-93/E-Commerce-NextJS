@@ -14,7 +14,7 @@ export default async function Home() {
     orderBy: { id: "desc" },
   });
   return (
-    <div className="flex flex-col items-center justify-between gap-y-4">
+    <div className="flex flex-col items-center justify-between gap-y-4 p-4">
       <section className="flex flex-col items-center justify-between">
         <Link href="/add-product">
           <button className="btn btn-primary uppercase" type="submit">
