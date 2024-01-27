@@ -12,8 +12,8 @@ const ProductCard = ({ product }: Props) => {
     Date.now() - new Date(createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
 
   return (
-    <Link href={`/product/${id}`} className="col-span-1">
-      <div className="card w-full bg-base-100 shadow-xl hover:shadow-2xl">
+    <Link href={`/product/${id}`} className="col-span-1 min-h-[576px]">
+      <div className="card h-full w-full bg-base-100 shadow-xl hover:shadow-2xl">
         <figure>
           <Image
             src={imageUrl}
@@ -25,8 +25,12 @@ const ProductCard = ({ product }: Props) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
-          {isNew && <p className="badge badge-warning text-white">NEW!</p>}
-          <p className="truncate">{description}</p>
+          {isNew && (
+            <p className="badge badge-warning max-h-6 min-h-6 text-white">
+              NEW!
+            </p>
+          )}
+          <p className="line-clamp-3">{description}</p>
           <div className="card-actions items-center justify-between">
             <PriceTag price={price} className="text-xl font-bold" />
             <button className="btn btn-primary">Buy Now</button>

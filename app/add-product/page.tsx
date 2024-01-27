@@ -2,9 +2,10 @@ import CancelButton from "@/components/atoms/Buttons/CancelButton";
 import prisma from "../../utils/db/prisma";
 import { redirect } from "next/navigation";
 import FormSubmitButton from "@/components/atoms/Buttons/FormSubmitButton";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Add Product | E-Commerce App",
+export const metadata: Metadata = {
+  title: "Add Product | Glamazon",
 };
 
 async function createProduct(formData: FormData) {

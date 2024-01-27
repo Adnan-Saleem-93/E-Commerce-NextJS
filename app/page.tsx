@@ -3,6 +3,11 @@ import prisma from "../utils/db/prisma";
 import { Product } from "@prisma/client";
 import ProductCard from "@/components/molecules/ProductCard";
 import HighlightedProduct from "@/components/molecules/HighlightedProduct";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Products | Glamazon",
+};
 
 export default async function Home() {
   const products = await prisma.product.findMany({

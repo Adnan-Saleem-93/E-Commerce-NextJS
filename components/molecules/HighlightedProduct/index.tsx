@@ -20,8 +20,8 @@ const HighlightedProduct = ({ product }: Props) => {
         />
         <div className="flex w-full flex-col items-start p-4 lg:justify-center">
           <h1 className="text-3xl font-bold">{name}</h1>
-          <p className="py-3">{description}</p>
-          <Link href={`/product/${id}`} className="btn btn-warning">
+          <p className="line-clamp-6 py-3">{description}</p>
+          <Link href={`/product/${id}`} className="btn btn-warning text-white">
             Check it Out!
           </Link>
         </div>
