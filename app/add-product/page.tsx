@@ -3,9 +3,10 @@ import prisma from "../../utils/db/prisma";
 import { redirect } from "next/navigation";
 import FormSubmitButton from "@/components/atoms/Buttons/FormSubmitButton";
 import { Metadata } from "next";
+import { APP_NAME } from "@/utils/constants";
 
 export const metadata: Metadata = {
-  title: "Add Product | Glamazon",
+  title: `Add Product | ${APP_NAME}`,
 };
 
 async function createProduct(formData: FormData) {
