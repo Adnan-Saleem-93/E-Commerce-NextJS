@@ -10,13 +10,17 @@ import PriceTag from "@/components/atoms/PriceTag";
 type Props = { params: { id: string } };
 
 const getProduct = cache(async (id: string) => {
-  const product = await prisma.product.findUnique({ where: { id } });
+  const product = await prisma.product.findUnique({
+    where: { id },
+  });
   if (!product) notFound();
 
   return product;
 });
 
-const generateMetadata = async (id: string): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params: { id },
+}: Props): Promise<Metadata> => {
   const product = await getProduct(id);
 
   return {
