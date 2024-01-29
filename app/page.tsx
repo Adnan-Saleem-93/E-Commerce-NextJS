@@ -23,7 +23,7 @@ export default async function Home() {
         </Link>
       </section>
       <section id="products-section" className="flex flex-col gap-y-8">
-        <article id="product-main w-full">
+        <article id="product-main" className="w-full">
           <HighlightedProduct product={products[0]} />
         </article>
         <article
