@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main
-          className="min-h-screen min-w-full bg-gradient-to-r from-green-300 to-sky-300 p-4"
+          className="min-h-screen min-w-full bg-gradient-to-r from-blue-200 to-cyan-200 p-4"
           data-theme="light"
         >
           {children}
