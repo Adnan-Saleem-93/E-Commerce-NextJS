@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Prompt } from "next/font/google";
 import "./globals.css";
 import { APP_NAME } from "@/utils/constants";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Prompt({
+  weight: ["100", "300", "500", "700", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: APP_NAME,
@@ -17,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={font.className}>
         <main
           className="min-h-screen min-w-full bg-gradient-to-r from-blue-200 to-cyan-200 p-4"
           data-theme="light"
