@@ -1,4 +1,5 @@
 import PriceTag from "@/components/atoms/PriceTag";
+import Rating from "@/components/atoms/Rating";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +8,7 @@ import React from "react";
 type Props = { product: Product };
 
 const ProductCard = ({ product }: Props) => {
-  const { id, imageUrl, name, description, price, createdAt } = product;
+  const { id, imageUrl, name, description, price, createdAt, rating } = product;
   const isNew =
     Date.now() - new Date(createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
 
@@ -30,10 +31,13 @@ const ProductCard = ({ product }: Props) => {
               NEW!
             </p>
           )}
-          <p className="line-clamp-3">{description}</p>
-          <div className="card-actions items-center justify-between">
-            <PriceTag price={price} className="text-xl font-bold" />
-            <button className="btn btn-primary">Buy Now</button>
+          <p className="line-clamp-3 flex-grow-0">{description}</p>
+          <div className="flex flex-col justify-center gap-y-2">
+            <Rating rating={rating} productId={id} />
+            <div className="card-actions items-center justify-between">
+              <PriceTag price={price} className="text-xl font-bold" />
+              <button className="btn btn-primary">Buy Now</button>
+            </div>
           </div>
         </div>
       </div>
