@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 import "./globals.css";
 import { APP_NAME } from "@/utils/constants";
+import Navbar from "@/components/organisms/Navbar";
 
 const font = Prompt({
   weight: ["100", "300", "500", "700", "900"],
@@ -21,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <Navbar />
         <main
-          className="min-h-screen min-w-full bg-gradient-to-r from-blue-200 to-cyan-200 p-4"
+          className="body-bg min-h-screen min-w-full p-4"
           data-theme="light"
         >
           {children}

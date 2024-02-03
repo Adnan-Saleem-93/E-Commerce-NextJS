@@ -13,4 +13,8 @@
   .btn-dark {
     @apply btn bg-gray-900 text-white hover:bg-black;
   }
+
+  .body-bg {
+    @apply bg-gradient-to-r from-blue-200 to-cyan-200;
+  }
 }
