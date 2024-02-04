@@ -15,13 +15,7 @@ export default async function Home() {
   });
   return (
     <div className="flex flex-col items-center justify-between gap-y-8 p-4">
-      <section className="flex flex-col items-center justify-between">
-        <Link href="/add-product">
-          <button className="btn btn-primary uppercase" type="submit">
-            Add New Product
-          </button>
-        </Link>
-      </section>
+      <section className="flex flex-col items-center justify-between"></section>
       <section id="products-section" className="flex flex-col gap-y-8">
         <article id="product-main" className="w-full">
           <HighlightedProduct product={products[0]} />

@@ -32,12 +32,10 @@ const ProductCard = ({ product }: Props) => {
             </p>
           )}
           <p className="line-clamp-3 flex-grow-0">{description}</p>
-          <div className="flex flex-col justify-center gap-y-2">
+
+          <div className="card-actions items-center justify-between">
             <Rating rating={rating} productId={id} />
-            <div className="card-actions items-center justify-between">
-              <PriceTag price={price} className="text-xl font-bold" />
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
+            <PriceTag price={price} className="text-xl font-bold" />
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ async function createProduct(formData: FormData) {
 const AddProductPage = () => {
   return (
     <section className="flex h-full w-full flex-col items-center justify-center gap-y-3">
-      <h1 className="text-lg font-bold uppercase tracking-wider text-blue-600">
+      <h1 className="text-lg font-bold uppercase tracking-wider text-black">
         Add Product
       </h1>
 
@@ -51,6 +51,7 @@ const AddProductPage = () => {
           name="name"
           placeholder="Product Name"
           className="input input-bordered input-primary col-span-2"
+          autoFocus
         />
         <textarea
           required
