@@ -3,6 +3,7 @@ import AppLogo from "@/assets/logo.png";
 import { APP_NAME } from "@/utils/constants";
 import CartCountIndicator from "@/components/atoms/CartCountIndicator";
 import Link from "next/link";
+import CartMenu from "@/components/molecules/CartMenu";
 
 export default function Navbar() {
   return (
@@ -18,7 +19,11 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex-none gap-x-4">
-          <CartCountIndicator />
+          <Link href="/add-product">
+            <button className="btn btn-primary uppercase" type="submit">
+              Add New Product
+            </button>
+          </Link>
           <div className="form-control">
             <input
               type="text"
@@ -26,12 +31,8 @@ export default function Navbar() {
               className="input input-bordered w-24 md:w-auto"
             />
           </div>
-
-          <Link href="/add-product">
-            <button className="btn btn-primary uppercase" type="submit">
-              Add New Product
-            </button>
-          </Link>
+          {/* <CartCountIndicator /> */}
+          <CartMenu />
         </div>
       </div>
     </nav>
