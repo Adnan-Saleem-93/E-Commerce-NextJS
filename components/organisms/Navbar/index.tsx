@@ -25,7 +25,7 @@ export default async function Navbar() {
         <div className="flex-1">
           <Link
             href="/"
-            className="flex cursor-pointer items-center justify-center gap-x-2 text-xl"
+            className="btn btn-ghost flex cursor-pointer items-center justify-center gap-x-2 text-xl"
           >
             <Image alt="glamazon-logo" src={AppLogo} className="h-5 w-5" />
             {APP_NAME}
