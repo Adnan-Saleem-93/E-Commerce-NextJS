@@ -4,11 +4,9 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { APP_NAME } from "@/utils/constants";
 import Image from "next/image";
-import Link from "next/link";
 import PriceTag from "@/components/atoms/PriceTag";
 import AddToButtonCart from "@/components/atoms/Buttons/AddToCart.Button";
 import { incrementProductQuantity } from "./actions";
-import LeftArrow from "@/components/atoms/Icons/LeftArrow";
 import BackButton from "@/components/atoms/Buttons/BackButton";
 
 type Props = { params: { id: string } };

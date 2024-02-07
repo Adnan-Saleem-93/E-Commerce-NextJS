@@ -4,11 +4,11 @@ import { Cart, Prisma } from "@prisma/client";
 
 const CART_ID_KEY: string = "localCartId";
 
-type CartWithProducts = Prisma.CartGetPayload<{
+export type CartWithProducts = Prisma.CartGetPayload<{
   include: { items: { include: { product: true } } };
 }>;
 
-type ShoppingCartProps = CartWithProducts & {
+export type ShoppingCartProps = CartWithProducts & {
   itemCount: number;
   subTotal: number;
 };

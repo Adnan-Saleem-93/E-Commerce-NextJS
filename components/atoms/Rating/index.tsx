@@ -12,7 +12,7 @@ export default function Rating({ rating = 0, productId = "" }: Props) {
               type="radio"
               name={`rating-${number}`}
               className={` ${number === 0 ? "rating-hidden" : number % 2 === 0 ? "mask mask-half-2 mask-star-2" : "mask mask-half-1 mask-star-2"} bg-yellow-500`}
-              checked={rating === number}
+              defaultChecked={rating === number}
             />
           </Fragment>
         );

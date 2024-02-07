@@ -4,8 +4,11 @@ import { APP_NAME } from "@/utils/constants";
 import CartCountIndicator from "@/components/atoms/CartCountIndicator";
 import Link from "next/link";
 import CartMenu from "@/components/molecules/CartMenu";
+import { getCart } from "@/utils/db/cart";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const cart = await getCart();
+
   return (
     <nav className="body-bg p-4">
       <div className="navbar mx-auto box-border rounded-lg bg-base-100 shadow-sm">
@@ -31,8 +34,8 @@ export default function Navbar() {
               className="input input-bordered w-24 md:w-auto"
             />
           </div>
-          {/* <CartCountIndicator /> */}
-          <CartMenu />
+
+          <CartMenu cart={cart} />
         </div>
       </div>
     </nav>
