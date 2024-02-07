@@ -1,3 +1,4 @@
+"use client";
 import CartCountIndicator from "@/components/atoms/CartCountIndicator";
 import { ShoppingCartProps } from "@/utils/db/cart";
 import { formatPrice } from "@/utils/helper-methods";
@@ -6,6 +7,14 @@ import Link from "next/link";
 type Props = { cart: ShoppingCartProps | null };
 
 export default function CartMenu({ cart }: Props) {
+  const closeCartMenu = () => {
+    const elem = document.activeElement as HTMLElement;
+
+    if (elem) {
+      elem.blur();
+    }
+  };
+
   return (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-circle btn-ghost">
@@ -20,10 +29,17 @@ export default function CartMenu({ cart }: Props) {
             {cart?.itemCount || 0} Items
           </span>
           <span className="text-gray-400">
-            Subtotal: {formatPrice(cart?.subTotal || 0)}
+            Subtotal:{" "}
+            <span className="text-xl font-bold text-gray-500">
+              {formatPrice(cart?.subTotal || 0)}
+            </span>
           </span>
           <div className="card-actions">
-            <Link href="/cart" className="btn btn-primary btn-block">
+            <Link
+              href="/cart"
+              className="btn btn-primary btn-block"
+              onClick={closeCartMenu}
+            >
               View cart
             </Link>
           </div>

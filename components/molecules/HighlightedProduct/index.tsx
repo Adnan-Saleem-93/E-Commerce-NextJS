@@ -17,10 +17,13 @@ const HighlightedProduct = ({ product }: Props) => {
         className="h-full max-h-80 min-h-80 w-full rounded-2xl object-cover shadow-xl md:max-w-sm lg:max-w-lg"
         priority
       />
-      <div className="flex w-full flex-col items-start gap-y-2 p-4 lg:justify-center">
+      <div className="flex w-full flex-col items-start gap-y-2 pt-4 md:justify-between md:px-4 md:py-0">
         <h1 className="text-3xl font-bold">{name}</h1>
         <p className="line-clamp-6">{description}</p>
-        <Link href={`/product/${id}`} className="btn btn-warning text-white">
+        <Link
+          href={`/product/${id}`}
+          className="btn btn-accent btn-block text-white"
+        >
           Check it Out!
         </Link>
       </div>

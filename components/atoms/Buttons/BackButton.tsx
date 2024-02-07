@@ -1,9 +1,12 @@
 import Link from "next/link";
 import LeftArrow from "../Icons/LeftArrow";
 
-type Props = { text: string; href?: string };
+type Props = { text?: string; href?: string };
 
-export default function BackButton({ text, href = "/" }: Props) {
+export default function BackButton({
+  text = "Back to Products",
+  href = "/",
+}: Props) {
   return (
     <Link href={href} className="group btn btn-outline">
       <LeftArrow
