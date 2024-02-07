@@ -1,10 +1,20 @@
 import Image from "next/image";
 import AppLogo from "@/assets/logo.png";
-import { APP_NAME } from "@/utils/constants";
-import CartCountIndicator from "@/components/atoms/CartCountIndicator";
+import { APP_NAME, SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
 import Link from "next/link";
 import CartMenu from "@/components/molecules/CartMenu";
 import { getCart } from "@/utils/db/cart";
+import { redirect } from "next/navigation";
+
+const searchProducts = async (formData: FormData) => {
+  "use server";
+
+  const searchQuery = formData.get(SEARCH_QUERY_INPUT_NAME)?.toString();
+
+  if (searchQuery) {
+    redirect(`/search?query=${searchQuery}`);
+  }
+};
 
 export default async function Navbar() {
   const cart = await getCart();
@@ -27,13 +37,16 @@ export default async function Navbar() {
               Add New Product
             </button>
           </Link>
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
-            />
-          </div>
+          <form action={searchProducts}>
+            <div className="form-control">
+              <input
+                name={SEARCH_QUERY_INPUT_NAME}
+                type="text"
+                placeholder="Search"
+                className="input input-bordered w-24 md:w-auto"
+              />
+            </div>
+          </form>
 
           <CartMenu cart={cart} />
         </div>
