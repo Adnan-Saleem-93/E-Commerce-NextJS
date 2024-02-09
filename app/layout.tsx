@@ -3,6 +3,7 @@ import { Prompt } from "next/font/google";
 import "./globals.css";
 import { APP_NAME } from "@/utils/constants";
 import Navbar from "@/components/organisms/Navbar";
+import Footer from "@/components/organisms/Footer";
 
 const font = Prompt({
   weight: ["100", "300", "500", "700", "900"],
@@ -29,6 +30,7 @@ export default function RootLayout({
         >
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
