@@ -2,7 +2,7 @@ import Image from "next/image";
 import AppLogo from "@/assets/logo.png";
 import { APP_NAME, SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
 import Link from "next/link";
-import CartMenu from "@/components/molecules/CartMenu";
+import CartMenu from "@/components/molecules/Cart/Menu";
 import { getCart } from "@/utils/db/cart";
 import { redirect } from "next/navigation";
 

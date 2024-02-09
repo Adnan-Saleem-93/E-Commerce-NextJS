@@ -12,13 +12,13 @@ export default function Footer({}: Props) {
         <p>Copyright © 2024 - All right reserved</p>
       </aside>
       <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <a>
+        <a className="group cursor-pointer">
           <TwitterIcon />
         </a>
-        <a>
+        <a className="group cursor-pointer">
           <YoutubeIcon />
         </a>
-        <a>
+        <a className="group cursor-pointer">
           <FacebookIcon />
         </a>
       </nav>
