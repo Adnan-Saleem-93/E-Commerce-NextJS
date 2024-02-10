@@ -5,6 +5,13 @@ import ProductCard from "@/components/molecules/ProductCard";
 import HighlightedProduct from "@/components/molecules/HighlightedProduct";
 import { Metadata } from "next";
 
+// TODO: Sort Products by Price, Date Added, Reviews (default -> New Products)
+// TODO: Authentication
+// TODO: Provide Ratings & Review for a Product.
+// TODO: Show Review of Product.
+// TODO: Buy Now Feature & Stripe Integration
+// TODO: Stripe Integration
+
 export const metadata: Metadata = {
   title: "Products | Glamazon",
 };
@@ -14,15 +21,15 @@ export default async function Home() {
     orderBy: { id: "desc" },
   });
   return (
-    <div className="flex flex-col items-center justify-between gap-y-8 p-4">
+    <div className="flex flex-col items-center justify-between p-4">
       <section className="flex flex-col items-center justify-between"></section>
-      <section id="products-section" className="flex flex-col gap-y-8">
+      <section id="products-section" className="flex flex-col gap-y-20">
         <article id="product-main" className="w-full">
           <HighlightedProduct product={products[0]} />
         </article>
         <article
           id="products-secondary"
-          className="xs:grid-cols-1 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="xs:grid-cols-1 grid gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
         >
           {products.slice(1).map((product: Product, index: number) => {
             return (

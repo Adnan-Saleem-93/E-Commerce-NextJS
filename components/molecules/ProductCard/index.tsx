@@ -1,5 +1,5 @@
 import PriceTag from "@/components/atoms/PriceTag";
-import Rating from "@/components/atoms/Rating";
+import RatingOverview from "@/components/atoms/Rating/Overview";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,15 +13,15 @@ const ProductCard = ({ product }: Props) => {
     Date.now() - new Date(createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
 
   return (
-    <Link href={`/product/${id}`} className="col-span-1 min-h-[500px]">
-      <div className="card h-full w-full bg-base-100 shadow-xl hover:ring-2 hover:ring-blue-500">
+    <Link href={`/product/${id}`} className="col-span-1 min-h-[400px]">
+      <div className="card h-full w-full bg-base-100 shadow-sm hover:shadow-xl">
         <figure className="h-1/2">
           <Image
             src={imageUrl}
             alt={name.toLowerCase().replaceAll(" ", "-")}
             width={384}
             height={226.75}
-            className="h-full max-h-80 min-h-80 w-full object-cover"
+            className="h-full max-h-60 min-h-60 w-full object-cover"
           />
         </figure>
         <div className="card-body h-1/2 justify-between">
@@ -34,7 +34,7 @@ const ProductCard = ({ product }: Props) => {
           <p className="line-clamp-3 flex-grow-0">{description}</p>
 
           <div className="card-actions items-center justify-between">
-            <Rating rating={rating} productId={id} />
+            <RatingOverview rating={rating} />
             <PriceTag price={price} className="text-xl font-bold" />
           </div>
         </div>

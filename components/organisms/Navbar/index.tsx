@@ -34,7 +34,7 @@ export default async function Navbar() {
         <div className="flex-none gap-x-4">
           <Link href="/add-product">
             <button className="btn btn-primary uppercase" type="submit">
-              Add New Product
+              Add
             </button>
           </Link>
           <form action={searchProducts}>
