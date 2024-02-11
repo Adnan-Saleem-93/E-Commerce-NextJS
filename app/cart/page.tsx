@@ -1,3 +1,4 @@
+import ShoppingBagIcon from "@/components/atoms/Icons/ShoppingBagIcon";
 import NoResultText from "@/components/atoms/Typography/NoResultText";
 import CartItem from "@/components/molecules/Cart/CartItem";
 import { CartItemWithProduct, getCart } from "@/utils/db/cart";
@@ -26,10 +27,14 @@ export default async function CartPage() {
               <h4 className="text-2xl font-semibold uppercase text-gray-600">
                 Sub Total :
               </h4>
-              <span className="text-4xl font-bold">
+              <span className="text-3xl font-bold">
                 {formatPrice(cart.subTotal)}
               </span>
             </div>
+            <button className="btn btn-primary btn-block mt-2 text-xl">
+              Checkout
+              <ShoppingBagIcon fill="#fff" width="20" height="20" />
+            </button>
           </div>
         </div>
       ) : (
