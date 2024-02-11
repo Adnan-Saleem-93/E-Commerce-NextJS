@@ -10,7 +10,13 @@ export default async function CartPage() {
       {cart?.items.length ? (
         <div className="grid grid-cols-1">
           {cart?.items.map((item: CartItemWithProduct, index: number) => {
-            return <CartItem key={index} item={item} />;
+            return (
+              <CartItem
+                key={index}
+                item={item}
+                isLastItem={index === cart?.items.length - 1}
+              />
+            );
           })}
         </div>
       ) : (

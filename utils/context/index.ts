@@ -15,13 +15,18 @@ interface ModalState {
     props,
     onPrimaryAction,
   }: ModalContextProps) => void;
+  resetModalProps: () => void;
 }
-export const useModalStore = create<ModalState>()((set) => ({
+
+const initialModalState = {
   title: "",
   content: "",
   props: null,
   onPrimaryAction: null,
   open: false,
+};
+export const useModalStore = create<ModalState>()((set) => ({
+  ...initialModalState,
   setModalProps: ({
     title = "",
     content,
@@ -37,4 +42,6 @@ export const useModalStore = create<ModalState>()((set) => ({
       onPrimaryAction,
       open,
     })),
+
+  resetModalProps: () => set((state) => ({ ...state, ...initialModalState })),
 }));

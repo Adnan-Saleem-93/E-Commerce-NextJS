@@ -1,15 +1,11 @@
 import DecreaseCartItemButton from "@/components/atoms/Buttons/DecreaseCartItemButton";
 import IncreaseCartItemButton from "@/components/atoms/Buttons/IncreaseCartItemButton";
 import RemoveCartItemButton from "@/components/atoms/Buttons/RemoveCartItemButton";
-import MinusIcon from "@/components/atoms/Icons/MinusIcon";
-import PlusIcon from "@/components/atoms/Icons/PlusIcon";
-import TrashIcon from "@/components/atoms/Icons/TrashIcon";
 import { CartItemWithProduct } from "@/utils/db/cart";
 import { formatPrice } from "@/utils/helper-methods";
 import Image from "next/image";
-import React from "react";
 
-type Props = { item: CartItemWithProduct };
+type Props = { item: CartItemWithProduct; isLastItem?: boolean };
 
 export default function CartItem({
   item: {
@@ -17,11 +13,12 @@ export default function CartItem({
     product: { imageUrl, name, price },
     quantity,
   },
+  isLastItem = false,
 }: Props) {
   return (
     <div>
       <div className="flex w-full items-center justify-between gap-4">
-        <figure className="h-48 w-48">
+        <figure className="h-36 w-36 lg:h-48 lg:w-48">
           <Image
             src={imageUrl}
             alt={name}
@@ -47,7 +44,7 @@ export default function CartItem({
           </div>
         </div>
       </div>
-      <div className="divider"></div>
+      {isLastItem ? null : <div className="divider"></div>}
     </div>
   );
 }
