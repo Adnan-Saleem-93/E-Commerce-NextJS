@@ -6,7 +6,7 @@ export default function TickIcon({ fill = "#fff", width = "24" }: Props) {
       clipRule="evenodd"
       fillRule="evenodd"
       strokeLinejoin="round"
-      stroke-miterlimit="2"
+      strokeMiterlimit="2"
       viewBox="0 0 24 24"
       width={width}
       xmlns="http://www.w3.org/2000/svg"

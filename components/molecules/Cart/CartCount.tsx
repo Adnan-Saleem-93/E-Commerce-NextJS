@@ -1,7 +1,7 @@
-import CartIcon from "../Icons/CartIcon";
+import CartIcon from "@/components/atoms/Icons/CartIcon";
 
 type Props = { cartCount?: number };
-export default function CartCountIndicator({ cartCount = 0 }: Props) {
+export default function CartCount({ cartCount = 0 }: Props) {
   return (
     <div className="indicator cursor-pointer rounded-full p-2">
       <CartIcon fill="#000" />

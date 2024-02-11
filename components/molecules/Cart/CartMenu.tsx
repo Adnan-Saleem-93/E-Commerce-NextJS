@@ -1,8 +1,9 @@
 "use client";
-import CartCountIndicator from "@/components/atoms/CartCountIndicator";
+
 import { ShoppingCartProps } from "@/utils/db/cart";
 import { formatPrice } from "@/utils/helper-methods";
 import Link from "next/link";
+import CartCount from "./CartCount";
 
 type Props = { cart: ShoppingCartProps | null };
 
@@ -18,7 +19,7 @@ export default function CartMenu({ cart }: Props) {
   return (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-circle btn-ghost">
-        <CartCountIndicator cartCount={cart?.itemCount || 0} />
+        <CartCount cartCount={cart?.itemCount || 0} />
       </div>
       <div
         tabIndex={0}
