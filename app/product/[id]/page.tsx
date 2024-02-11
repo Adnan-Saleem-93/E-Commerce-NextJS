@@ -40,9 +40,6 @@ const ProductPage = async ({ params: { id } }: Props) => {
 
   return (
     <div className="flex flex-col gap-y-6">
-      <div className="flex items-center justify-end">
-        <BackButton text="Back to Products" />
-      </div>
       <div className="flex flex-col items-center gap-y-6">
         <Image
           src={imageUrl}

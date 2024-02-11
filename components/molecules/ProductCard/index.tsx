@@ -14,7 +14,7 @@ const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/product/${id}`} className="col-span-1 min-h-[400px]">
-      <div className="card h-full w-full bg-base-100 shadow-sm hover:shadow-xl">
+      <div className="card h-full w-full bg-base-100 shadow-sm hover:shadow-2xl">
         <figure className="h-1/2">
           <Image
             src={imageUrl}

@@ -20,7 +20,7 @@ export default async function Navbar() {
   const cart = await getCart();
 
   return (
-    <nav className="body-bg p-4">
+    <nav className="body-bg p-2">
       <div className="navbar mx-auto box-border rounded-lg bg-base-100 shadow-sm">
         <div className="flex-1">
           <Link

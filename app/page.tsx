@@ -5,12 +5,14 @@ import ProductCard from "@/components/molecules/ProductCard";
 import HighlightedProduct from "@/components/molecules/HighlightedProduct";
 import { Metadata } from "next";
 
-// TODO: Sort Products by Price, Date Added, Reviews (default -> New Products)
+// TODO: Sort Products by Price, Date Added, Ratings (default -> New Products)
 // TODO: Authentication
 // TODO: Provide Ratings & Review for a Product.
 // TODO: Show Review of Product.
 // TODO: Buy Now Feature & Stripe Integration
 // TODO: Stripe Integration
+// TODO: Product Categories
+// TODO: Dark Mode
 
 export const metadata: Metadata = {
   title: "Products | Glamazon",
