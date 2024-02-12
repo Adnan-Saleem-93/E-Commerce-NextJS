@@ -1,4 +1,4 @@
-## This is a [Next.js](https://nextjs.org/) E-Commerce App
+## This is a [NextJS 14](https://nextjs.org/) E-Commerce App 
 
 - **Tailwind CSS and DaisyUI are used for the UI.**
 - **Prisma ORM is used for mapping objects to database and performing CRUD operations.**
