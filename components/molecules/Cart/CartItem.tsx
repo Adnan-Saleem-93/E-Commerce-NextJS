@@ -1,6 +1,5 @@
 import DecreaseCartItemButton from "@/components/atoms/Buttons/DecreaseCartItemButton";
 import IncreaseCartItemButton from "@/components/atoms/Buttons/IncreaseCartItemButton";
-import RemoveCartItemButton from "@/components/atoms/Buttons/RemoveCartItemButton";
 import { CartItemWithProduct } from "@/utils/db/cart";
 import { formatPrice } from "@/utils/helper-methods";
 import Image from "next/image";
@@ -16,8 +15,8 @@ export default function CartItem({
   isLastItem = false,
 }: Props) {
   return (
-    <div>
-      <div className="flex w-full items-center justify-between gap-4">
+    <div className="flex h-full flex-col">
+      <div className="flex h-full w-full items-center justify-between gap-4">
         <figure className="h-36 w-36 lg:h-48 lg:w-48">
           <Image
             src={imageUrl}
@@ -38,9 +37,11 @@ export default function CartItem({
             <div className="flex items-center justify-between gap-2">
               <IncreaseCartItemButton productId={productId} />
               <span className="text-xl">{quantity}</span>
-              <DecreaseCartItemButton productId={productId} />
+              <DecreaseCartItemButton
+                productId={productId}
+                quantity={quantity}
+              />
             </div>
-            <RemoveCartItemButton productId={productId} className="w-full" />
           </div>
         </div>
       </div>

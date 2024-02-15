@@ -1,4 +1,3 @@
-import Link from "next/link";
 import prisma from "../utils/db/prisma";
 import { Product } from "@prisma/client";
 import ProductCard from "@/components/molecules/ProductCard";

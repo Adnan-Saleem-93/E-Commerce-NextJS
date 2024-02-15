@@ -3,8 +3,11 @@ import LoadingCard from "@/components/molecules/ProductCard/Loading";
 
 const LoadingPage = () => {
   return (
-    <div className="flex flex-col items-center justify-between gap-y-20 p-4">
-      <section id="products-section" className="flex w-full flex-col gap-y-8">
+    <div className="flex h-full flex-col items-center justify-between gap-y-20 p-4">
+      <section
+        id="products-section"
+        className="flex h-full w-full flex-col gap-y-8"
+      >
         <LoadingHighlightedProduct />
         <article
           id="products-secondary-loading"

@@ -27,7 +27,7 @@ export default function RootLayout({
         <Navbar />
         <Modal />
         <main
-          className="body-bg min-h-screen min-w-full p-4"
+          className="body-bg h-full min-h-screen min-w-full p-4"
           data-theme="light"
         >
           {children}

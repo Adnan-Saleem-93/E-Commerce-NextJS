@@ -3,9 +3,6 @@ import LoadingButton from "@/components/atoms/Buttons/Loading";
 export default function LoadingPage() {
   return (
     <div className="flex flex-col gap-y-6">
-      <div className="flex w-full items-center justify-end">
-        <LoadingButton className="w-[10rem]" />
-      </div>
       <div className="flex flex-col items-center gap-y-6">
         <div className="skeleton h-full max-h-80 min-h-80 w-full rounded-2xl object-cover shadow-xl md:max-w-sm lg:max-w-lg" />
         <div className="flex w-full flex-col items-start gap-y-6 md:w-3/4 lg:justify-center">

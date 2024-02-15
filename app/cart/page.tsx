@@ -20,28 +20,30 @@ export default async function CartPage() {
               />
             );
           })}
-
-          <div className="flex w-full flex-col items-center justify-between">
-            <div className="my-8 h-[2px] w-full bg-black"></div>
-            <div className="flex w-full items-center justify-between">
-              <h4 className="text-2xl font-semibold uppercase text-gray-600">
-                Sub Total :
-              </h4>
-              <span className="text-3xl font-bold">
-                {formatPrice(cart.subTotal)}
-              </span>
-            </div>
-            <button className="btn btn-primary btn-block mt-2 text-xl">
-              Checkout
-              <ShoppingBagIcon fill="#fff" width="20" height="20" />
-            </button>
-          </div>
         </div>
       ) : (
         <div className="mx-auto mt-8 w-full text-center">
           <NoResultText text="Cart is Empty" className="text-4xl" />
         </div>
       )}
+
+      {cart?.items.length ? (
+        <div className="flex w-full flex-col items-center justify-between">
+          <div className="my-8 h-[2px] w-full bg-black"></div>
+          <div className="flex w-full items-center justify-between">
+            <h4 className="text-2xl font-semibold uppercase text-gray-600">
+              Sub Total :
+            </h4>
+            <span className="text-3xl font-bold">
+              {formatPrice(cart.subTotal)}
+            </span>
+          </div>
+          <button className="btn btn-primary btn-block mt-2 text-xl">
+            Checkout
+            <ShoppingBagIcon fill="#fff" width="20" height="20" />
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }
