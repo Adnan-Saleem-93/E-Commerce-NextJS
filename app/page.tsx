@@ -3,6 +3,7 @@ import { Product } from "@prisma/client";
 import ProductCard from "@/components/molecules/ProductCard";
 import HighlightedProduct from "@/components/molecules/HighlightedProduct";
 import { Metadata } from "next";
+import { APP_NAME } from "@/utils/constants";
 
 // TODO: Sort Products by Price, Date Added, Ratings (default -> New Products)
 // TODO: Authentication
@@ -14,7 +15,7 @@ import { Metadata } from "next";
 // TODO: Dark Mode
 
 export const metadata: Metadata = {
-  title: "Products | Glamazon",
+  title: `Products | ${APP_NAME}`,
 };
 
 export default async function Home() {

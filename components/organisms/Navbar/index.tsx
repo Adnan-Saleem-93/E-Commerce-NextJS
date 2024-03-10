@@ -1,6 +1,6 @@
 import Image from "next/image";
 import AppLogo from "@/assets/logo.png";
-import { SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
+import { APP_NAME, SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
 import Link from "next/link";
 import CartMenu from "@/components/molecules/Cart/CartMenu";
 import { getCart } from "@/utils/db/cart";
@@ -38,7 +38,6 @@ export default async function Navbar() {
             href="/"
             className="btn btn-ghost flex cursor-pointer items-center justify-center gap-x-2 text-xl"
           >
-            <Image alt="glamazon-logo" src={AppLogo} className="h-5 w-5" />
             <span
               className={tangerine.className}
               style={{
@@ -46,17 +45,17 @@ export default async function Navbar() {
                 fontSize: "30px",
               }}
             >
-              Glitz
-            </span>{" "}
+              {APP_NAME.split("&")[0]}
+            </span>
             &
             <span
               className={yellowtail.className}
               style={{
-                transform: "rotate(342deg) translateX(-20px)",
+                transform: "rotate(342deg) translateX(-10px)",
                 fontSize: "30px",
               }}
             >
-              Glamour
+              {APP_NAME.split("&")[1]}
             </span>
           </Link>
         </div>
