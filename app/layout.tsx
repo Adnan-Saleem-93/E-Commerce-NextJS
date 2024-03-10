@@ -5,6 +5,7 @@ import { APP_NAME } from "@/utils/constants";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import Modal from "@/components/molecules/Modal";
+import SessionProvider from "./SessionProvider";
 
 const font = Prompt({
   weight: ["100", "300", "500", "700", "900"],
@@ -24,15 +25,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
-        <Modal />
-        <main
-          className="body-bg h-full min-h-screen min-w-full p-4"
-          data-theme="light"
-        >
-          {children}
-        </main>
-        <Footer />
+        <SessionProvider>
+          <Navbar />
+          <Modal />
+          <main
+            className="body-bg h-full min-h-screen min-w-full p-4"
+            data-theme="light"
+          >
+            {children}
+          </main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );
