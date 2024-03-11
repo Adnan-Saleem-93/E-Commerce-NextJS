@@ -1,21 +1,9 @@
-import Image from "next/image";
-import AppLogo from "@/assets/logo.png";
 import { APP_NAME, SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
 import Link from "next/link";
 import CartMenu from "@/components/molecules/Cart/CartMenu";
 import { getCart } from "@/utils/db/cart";
 import { redirect } from "next/navigation";
-import { Yellowtail } from "next/font/google";
-import { Tangerine } from "next/font/google";
-
-const yellowtail = Yellowtail({
-  weight: "400",
-  subsets: ["latin"],
-});
-const tangerine = Tangerine({
-  weight: "400",
-  subsets: ["latin"],
-});
+import AppName from "@/components/atoms/Typography/AppName";
 
 const searchProducts = async (formData: FormData) => {
   "use server";
@@ -34,30 +22,7 @@ export default async function Navbar() {
     <nav className="body-bg p-2">
       <div className="navbar mx-auto box-border rounded-lg bg-base-100 shadow-sm">
         <div className="flex-1">
-          <Link
-            href="/"
-            className="btn btn-ghost flex cursor-pointer items-center justify-center gap-x-2 text-xl"
-          >
-            <span
-              className={tangerine.className}
-              style={{
-                transform: "rotate(342deg)",
-                fontSize: "30px",
-              }}
-            >
-              {APP_NAME.split("&")[0]}
-            </span>
-            &
-            <span
-              className={yellowtail.className}
-              style={{
-                transform: "rotate(342deg) translateX(-10px)",
-                fontSize: "30px",
-              }}
-            >
-              {APP_NAME.split("&")[1]}
-            </span>
-          </Link>
+          <AppName />
         </div>
         <div className="flex-none gap-x-4">
           <form action={searchProducts}>
