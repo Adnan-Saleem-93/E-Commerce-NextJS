@@ -1,9 +1,11 @@
-import { APP_NAME, SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
-import Link from "next/link";
+import { SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
 import CartMenu from "@/components/molecules/Cart/CartMenu";
 import { getCart } from "@/utils/db/cart";
 import { redirect } from "next/navigation";
 import AppName from "@/components/atoms/Typography/AppName";
+import UserAccountMenu from "@/components/molecules/Dropdowns/UserAccountMenu";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const searchProducts = async (formData: FormData) => {
   "use server";
@@ -16,6 +18,7 @@ const searchProducts = async (formData: FormData) => {
 };
 
 export default async function Navbar() {
+  const session = await getServerSession(authOptions);
   const cart = await getCart();
 
   return (
@@ -37,6 +40,7 @@ export default async function Navbar() {
           </form>
 
           <CartMenu cart={cart} />
+          <UserAccountMenu session={session} />
         </div>
       </div>
     </nav>
