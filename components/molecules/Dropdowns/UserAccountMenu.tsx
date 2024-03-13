@@ -4,6 +4,7 @@ import Image from "next/image";
 import MenuIcon from "../../../assets/svg/menu-icon.svg";
 import profilePicPlaceholder from "../../../assets/profile-pic-placeholder.png";
 import { signIn, signOut } from "next-auth/react";
+import AuthStatus from "../AuthStatus";
 
 type Props = { session: Session | null };
 
@@ -20,7 +21,7 @@ export default function UserAccountMenu({ session }: Props) {
             alt="profile-pic"
             width={40}
             height={40}
-            className="h-10 w-10"
+            className="h-10 w-10 rounded-full"
           />
         ) : (
           <Image
@@ -39,22 +40,13 @@ export default function UserAccountMenu({ session }: Props) {
         <ul className="card-body">
           <li>
             {user ? (
-              <button
-                className="btn btn-ghost uppercase"
+              <AuthStatus
+                text="Sign Out"
                 onClick={() => signOut({ callbackUrl: "/" })}
-              >
-                Sign Out
-              </button>
+                user={user}
+              />
             ) : (
-              <div className="flex w-full flex-col items-center justify-between gap-y-3">
-                <p className="text-[12px] text-gray-500">You are logged out!</p>
-                <button
-                  className="btn btn-neutral btn-block hover:text-white"
-                  onClick={() => signIn()}
-                >
-                  Sign In
-                </button>
-              </div>
+              <AuthStatus text="Sign In" onClick={() => signIn()} />
             )}
           </li>
         </ul>
