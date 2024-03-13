@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import FormSubmitButton from "@/components/atoms/Buttons/FormSubmitButton";
 import { Metadata } from "next";
 import { APP_NAME } from "@/utils/constants";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export const metadata: Metadata = {
   title: `Add Product | ${APP_NAME}`,
@@ -34,7 +36,13 @@ async function createProduct(formData: FormData) {
   }
 }
 
-const AddProductPage = () => {
+const AddProductPage = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/add-product");
+  }
+
   return (
     <section className="flex h-full w-full flex-col items-center justify-center gap-y-3">
       <h1 className="text-lg font-bold uppercase tracking-wider text-black">
