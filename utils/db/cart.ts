@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import prisma from "../../utils/db/prisma";
-import { Cart, Prisma } from "@prisma/client";
+import { Cart, CartItem, Prisma } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
@@ -71,4 +71,35 @@ export const createCart = async (): Promise<ShoppingCartProps> => {
     itemCount: 0,
     subTotal: 0,
   };
+};
+
+export const mergeLocalCartWithUserCart = async (userId: string) => {
+  const localCartId = cookies().get(CART_ID_KEY)?.value;
+  const localCart = await prisma.cart.findUnique({
+    where: { id: localCartId },
+    include: { items: true },
+  });
+
+  if (!localCart) return;
+
+  const userCart = await prisma.cart.findFirst({
+    where: { userId },
+    include: { items: true },
+  });
+
+  await prisma.$transaction(async (tx) => {});
+};
+
+const mergeCarts = (...cartItems: CartItem[][]) => {
+  return cartItems.reduce((acc, items) => {
+    items.forEach((item) => {
+      const existingItem = acc.find((x) => x.productId === item.productId);
+      if (existingItem) {
+        existingItem.quantity += item.quantity;
+      } else {
+        acc.push(item);
+      }
+    });
+    return acc;
+  }, [] as CartItem[]);
 };
