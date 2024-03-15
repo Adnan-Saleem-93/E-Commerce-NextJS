@@ -20,15 +20,28 @@ export default async function Home() {
         <article id="product-main" className="w-full">
           <HighlightedProduct product={products[0]} />
         </article>
-        <article
-          id="products-secondary"
-          className="xs:grid-cols-1 grid gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {products.slice(1).map((product: Product, index: number) => {
-            return (
-              <ProductCard key={`product-${index + 1}`} product={product} />
-            );
-          })}
+        <article id="products-secondary" className="flex flex-col gap-y-4">
+          <div className="flex items-center justify-between">
+            <div></div>
+            <div>
+              <select
+                className="select select-primary w-full max-w-xs"
+                value={4}
+              >
+                <option id="date">Date</option>
+                <option id="low-price">Price (Lowest First)</option>
+                <option id="high-price">Price (Highest First)</option>
+                <option id="name">Name</option>
+              </select>
+            </div>
+          </div>
+          <div className="xs:grid-cols-1 grid gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {products.slice(1).map((product: Product, index: number) => {
+              return (
+                <ProductCard key={`product-${index + 1}`} product={product} />
+              );
+            })}
+          </div>
         </article>
       </section>
     </div>
