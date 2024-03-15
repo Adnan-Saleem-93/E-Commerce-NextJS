@@ -7,7 +7,6 @@ import Image from "next/image";
 import PriceTag from "@/components/atoms/PriceTag";
 import AddToButtonCart from "@/components/atoms/Buttons/AddToCart.Button";
 import { incrementProductQuantity } from "./actions";
-import BackButton from "@/components/atoms/Buttons/BackButton";
 
 type Props = { params: { id: string } };
 

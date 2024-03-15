@@ -1,6 +1,5 @@
 "use client";
 import { useModalStore } from "@/utils/context";
-import { useEffect } from "react";
 
 export default function Modal() {
   const { open, title, content, onPrimaryAction, resetModalProps } =
