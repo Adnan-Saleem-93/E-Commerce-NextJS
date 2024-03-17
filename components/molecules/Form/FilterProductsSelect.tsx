@@ -1,8 +1,18 @@
 "use client";
 
+import { FILTER_BY_KEY } from "@/utils/constants";
+import { revalidatePath } from "next/cache";
+import { redirect, useRouter } from "next/navigation";
+
 type Props = { changeHandler?: any };
 
 export default function FilterProductsSelect({ changeHandler = null }: Props) {
+  const navigation = useRouter();
+  const updateSearchParams = (filter_by: string) => {
+    const params = new URLSearchParams([[FILTER_BY_KEY, filter_by]]);
+
+    navigation.push(`/?${params}`);
+  };
   return (
     <>
       <p className="min-w-[70px] font-semibold text-gray-500">Filter by:</p>
@@ -11,7 +21,7 @@ export default function FilterProductsSelect({ changeHandler = null }: Props) {
         defaultValue="createdAt"
         onChange={(e) => {
           // console.log(e.target.value);
-          changeHandler && changeHandler(e.target.selectedOptions[0]?.id);
+          updateSearchParams(e.target.selectedOptions[0]?.id);
         }}
       >
         <option id="createdAt">DATE (Newest First)</option>

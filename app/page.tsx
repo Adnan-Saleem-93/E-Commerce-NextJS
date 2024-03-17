@@ -3,22 +3,30 @@ import { Product } from "@prisma/client";
 import ProductCard from "@/components/molecules/ProductCard";
 import HighlightedProduct from "@/components/molecules/HighlightedProduct";
 import { Metadata } from "next";
-import { APP_NAME } from "@/utils/constants";
+import { APP_NAME, FILTER_BY_KEY } from "@/utils/constants";
 import FilterProductsSelect from "@/components/molecules/Form/FilterProductsSelect";
 
 export const metadata: Metadata = {
   title: `Products | ${APP_NAME}`,
 };
+type SearchParamsProps = {
+  [key: string]: string;
+};
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: SearchParamsProps;
+}) {
+  const filterBy: string = searchParams?.filter_by || "";
 
-export default async function Home() {
+  const filter = filterBy?.split("-")[0] || "";
+  const ascOrDesc = filterBy?.split("-")[1] || "asc";
+
   const products = await prisma.product.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: filter ? { [filter]: ascOrDesc } : { createdAt: "desc" },
   });
   async function filterProducts(filterType: string): Promise<void> {
     "use server";
-
-    const filter = filterType.split("-")[0];
-    const ascOrDesc = filterType.split("-")[1] || "asc";
 
     let filteredProducts = await prisma.product.findMany({
       orderBy: { [filter]: ascOrDesc },
