@@ -5,6 +5,8 @@ import HighlightedProduct from "@/components/molecules/HighlightedProduct";
 import { Metadata } from "next";
 import { APP_NAME, FILTER_BY_KEY } from "@/utils/constants";
 import FilterProductsSelect from "@/components/molecules/Form/FilterProductsSelect";
+import { findProductsWithFullCount } from "./actions";
+import Pagination from "@/components/molecules/Pagination";
 
 export const metadata: Metadata = {
   title: `Products | ${APP_NAME}`,
@@ -22,9 +24,11 @@ export default async function Home({
   const filter = filterBy?.split("-")[0] || "";
   const ascOrDesc = filterBy?.split("-")[1] || "asc";
 
-  const products = await prisma.product.findMany({
+  const productsWithCount = await findProductsWithFullCount({
     orderBy: filter ? { [filter]: ascOrDesc } : { createdAt: "desc" },
   });
+
+  const products = productsWithCount.data;
 
   return (
     <div className="flex flex-col items-center justify-between p-4">
@@ -35,6 +39,9 @@ export default async function Home({
         </article>
         <article id="products-secondary" className="flex flex-col gap-y-4">
           <div className="flex w-full items-center justify-between">
+            <div>
+              <Pagination totalCount={productsWithCount.pagination.total} />
+            </div>
             <div>
               <p className="text-3xl font-semibold">Our Products</p>
             </div>
