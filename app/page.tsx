@@ -25,13 +25,6 @@ export default async function Home({
   const products = await prisma.product.findMany({
     orderBy: filter ? { [filter]: ascOrDesc } : { createdAt: "desc" },
   });
-  async function filterProducts(filterType: string): Promise<void> {
-    "use server";
-
-    let filteredProducts = await prisma.product.findMany({
-      orderBy: { [filter]: ascOrDesc },
-    });
-  }
 
   return (
     <div className="flex flex-col items-center justify-between p-4">
@@ -46,7 +39,7 @@ export default async function Home({
               <p className="text-3xl font-semibold">Our Products</p>
             </div>
             <div className="flex w-[27.5%] items-center justify-end gap-x-3">
-              <FilterProductsSelect changeHandler={filterProducts} />
+              <FilterProductsSelect />
             </div>
           </div>
           <div className="xs:grid-cols-1 grid gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
