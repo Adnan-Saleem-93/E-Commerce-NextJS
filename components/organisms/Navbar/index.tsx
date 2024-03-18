@@ -1,21 +1,10 @@
-import { SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
 import CartMenu from "@/components/molecules/Cart/CartMenu";
 import { getCart } from "@/utils/db/cart";
-import { redirect } from "next/navigation";
 import AppName from "@/components/atoms/Typography/AppName";
 import UserAccountMenu from "@/components/molecules/Dropdowns/UserAccountMenu";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-
-const searchProducts = async (formData: FormData) => {
-  "use server";
-
-  const searchQuery = formData.get(SEARCH_QUERY_INPUT_NAME)?.toString();
-
-  if (searchQuery) {
-    redirect(`/search?query=${searchQuery}`);
-  }
-};
+import SearchBar from "@/components/atoms/Form/SearchBar";
 
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
@@ -24,21 +13,13 @@ export default async function Navbar() {
   return (
     <nav className="body-bg p-2">
       <div className="navbar mx-auto box-border rounded-lg bg-base-100 shadow-sm">
-        <div className="flex-1">
+        <div className="w-1/3 flex-1">
           <AppName />
         </div>
-        <div className="flex-none gap-x-4">
-          <form action={searchProducts}>
-            <div className="form-control">
-              <input
-                name={SEARCH_QUERY_INPUT_NAME}
-                type="text"
-                placeholder="Search"
-                className="input input-bordered w-24 md:w-auto"
-              />
-            </div>
-          </form>
-
+        <div className="w-1/3 flex-1">
+          <SearchBar />
+        </div>
+        <div className="w-1/3 flex-1 justify-end gap-x-4">
           <CartMenu cart={cart} />
           <UserAccountMenu session={session} />
         </div>
