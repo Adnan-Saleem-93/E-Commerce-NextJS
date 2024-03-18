@@ -24,11 +24,12 @@ export default async function Home({
   const filter = filterBy?.split("-")[0] || "";
   const ascOrDesc = filterBy?.split("-")[1] || "asc";
 
-  const productsWithCount = await findProductsWithFullCount({
+  const { pagination, data } = await findProductsWithFullCount({
     orderBy: filter ? { [filter]: ascOrDesc } : { createdAt: "desc" },
   });
 
-  const products = productsWithCount.data;
+  const products: Product[] = data;
+  const pages: number = pagination.pages;
 
   return (
     <div className="flex flex-col items-center justify-between p-4">
@@ -39,9 +40,11 @@ export default async function Home({
         </article>
         <article id="products-secondary" className="flex flex-col gap-y-4">
           <div className="flex w-full items-center justify-between">
-            <div>
-              <Pagination totalCount={productsWithCount.pagination.total} />
-            </div>
+            {pages > 1 && (
+              <div>
+                <Pagination pages={pages} />
+              </div>
+            )}
             <div>
               <p className="text-3xl font-semibold">Our Products</p>
             </div>

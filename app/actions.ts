@@ -12,6 +12,7 @@ export const findProductsWithFullCount = async (
   return {
     pagination: {
       total: count,
+      pages: Math.ceil(count / 10),
     },
     data: products,
   };

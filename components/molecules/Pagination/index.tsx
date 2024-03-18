@@ -1,14 +1,25 @@
 "use client";
 
-type Props = { totalCount: number };
+import { useState } from "react";
 
-export default function Pagination({ totalCount }: Props) {
+type Props = { pages: number };
+
+export default function Pagination({ pages }: Props) {
+  const [activePage, setActivePage] = useState(1);
+
   return (
     <div className="join gap-x-1">
-      <button className="btn join-item">1</button>
-      <button className="btn join-item btn-active">2</button>
-      <button className="btn join-item">3</button>
-      <button className="btn join-item">4</button>
+      {Array.from({ length: pages }, (_, index) => {
+        return (
+          <button
+            key={index}
+            className={`btn join-item ${activePage === index + 1 ? "btn-active" : ""}`}
+            onClick={() => setActivePage(index + 1)}
+          >
+            {index + 1}
+          </button>
+        );
+      })}
     </div>
   );
 }
