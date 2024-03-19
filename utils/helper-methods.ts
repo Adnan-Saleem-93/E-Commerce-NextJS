@@ -4,3 +4,17 @@ export const formatPrice = (price: number) => {
     currency: "USD",
   });
 };
+
+export function debounce<F extends (...args: any[]) => any>(
+  func: F,
+  timeout: number = 1000,
+): (...args: Parameters<F>) => void {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  return (...args: Parameters<F>) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      console.log(func);
+      func.apply(args);
+    }, timeout);
+  };
+}
