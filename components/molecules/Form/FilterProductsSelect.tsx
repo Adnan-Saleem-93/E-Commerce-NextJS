@@ -1,15 +1,14 @@
 "use client";
 
-import { FILTER_BY_KEY } from "@/utils/constants";
-import { revalidatePath } from "next/cache";
-import { redirect, useRouter } from "next/navigation";
+import { KEYS } from "@/utils/constants";
+import { useRouter } from "next/navigation";
 
 type Props = { changeHandler?: any };
 
 export default function FilterProductsSelect({ changeHandler = null }: Props) {
   const navigation = useRouter();
   const updateSearchParams = (filter_by: string) => {
-    const params = new URLSearchParams([[FILTER_BY_KEY, filter_by]]);
+    const params = new URLSearchParams([[KEYS.FILTER_BY_KEY, filter_by]]);
 
     navigation.push(`/?${params}`);
   };

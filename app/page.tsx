@@ -1,19 +1,17 @@
-import prisma from "../utils/db/prisma";
 import { Product } from "@prisma/client";
 import ProductCard from "@/components/molecules/ProductCard";
 import HighlightedProduct from "@/components/molecules/HighlightedProduct";
 import { Metadata } from "next";
-import { APP_NAME, FILTER_BY_KEY } from "@/utils/constants";
+import { APP_NAME } from "@/utils/constants";
 import FilterProductsSelect from "@/components/molecules/Form/FilterProductsSelect";
 import { findProductsWithFullCount } from "./actions";
 import Pagination from "@/components/molecules/Pagination";
+import { SearchParamsProps } from "@/utils/types";
 
 export const metadata: Metadata = {
   title: `Products | ${APP_NAME}`,
 };
-type SearchParamsProps = {
-  [key: string]: string;
-};
+
 export default async function Home({
   searchParams,
 }: {

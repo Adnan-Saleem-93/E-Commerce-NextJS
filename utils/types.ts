@@ -8,3 +8,6 @@ export type ModalContextProps = {
   onPrimaryAction?: any;
   open?: boolean;
 };
+export type SearchParamsProps = {
+  [key: string]: string;
+};
