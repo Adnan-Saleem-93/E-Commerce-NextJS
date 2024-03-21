@@ -23,9 +23,22 @@ export default function FilterProductsSelect({ changeHandler = null }: Props) {
           updateSearchParams(e.target.selectedOptions[0]?.id);
         }}
       >
-        <option id="createdAt">DATE (Newest First)</option>
-        <option id="price-asc">PRICE (Lowest First)</option>
-        <option id="price-desc">PRICE (Highest First)</option>
+        <optgroup label="DATE" className="text-gray-500/75">
+          <option className="text-black" id="createdAt-desc">
+            Newest First
+          </option>
+          <option className="text-black" id="createdAt-asc">
+            Oldest First
+          </option>
+        </optgroup>
+        <optgroup label="PRICE" className="text-gray-500/75">
+          <option className="text-black" id="price-asc">
+            Low to High
+          </option>
+          <option className="text-black" id="price-desc">
+            High to Low
+          </option>
+        </optgroup>
         <option id="name">Alphabetically</option>
       </select>
     </>
