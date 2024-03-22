@@ -25,26 +25,34 @@ export default function FilterProductsSelect({ changeHandler = null }: Props) {
       >
         <optgroup label="DATE" className="text-gray-500/75">
           <option className="text-black" id="createdAt-desc">
-            Newest to Oldest
+            Newest to Oldest (DATE)
           </option>
           <option className="text-black" id="createdAt-asc">
-            Oldest to Newest
+            Oldest to Newest (DATE)
           </option>
         </optgroup>
         <optgroup label="PRICE" className="text-gray-500/75">
           <option className="text-black" id="price-asc">
-            Low to High
+            Low to High (PRICE)
           </option>
           <option className="text-black" id="price-desc">
-            High to Low
+            High to Low (PRICE)
           </option>
         </optgroup>
         <optgroup label="NAME" className="text-gray-500/75">
           <option className="text-black" id="name-asc">
-            A-Z
+            A-Z (NAME)
           </option>
           <option className="text-black" id="name-desc">
-            Z-A
+            Z-A (NAME)
+          </option>
+        </optgroup>
+        <optgroup label="RATINGS" className="text-gray-500/75">
+          <option className="text-black" id="rating-asc">
+            Low to High (RATINGS)
+          </option>
+          <option className="text-black" id="rating-desc">
+            High to Low (RATINGS)
           </option>
         </optgroup>
       </select>
