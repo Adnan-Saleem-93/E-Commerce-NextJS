@@ -25,10 +25,10 @@ export default function FilterProductsSelect({ changeHandler = null }: Props) {
       >
         <optgroup label="DATE" className="text-gray-500/75">
           <option className="text-black" id="createdAt-desc">
-            Newest First
+            Newest to Oldest
           </option>
           <option className="text-black" id="createdAt-asc">
-            Oldest First
+            Oldest to Newest
           </option>
         </optgroup>
         <optgroup label="PRICE" className="text-gray-500/75">
@@ -39,7 +39,14 @@ export default function FilterProductsSelect({ changeHandler = null }: Props) {
             High to Low
           </option>
         </optgroup>
-        <option id="name">Alphabetically</option>
+        <optgroup label="NAME" className="text-gray-500/75">
+          <option className="text-black" id="name-asc">
+            A-Z
+          </option>
+          <option className="text-black" id="name-desc">
+            Z-A
+          </option>
+        </optgroup>
       </select>
     </>
   );
