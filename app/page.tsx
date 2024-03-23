@@ -60,8 +60,14 @@ export default async function Home({
                   <p className="text-3xl font-semibold">
                     {searchQuery ? (
                       <span className="text-gray-500">
-                        Showing results for
-                        <span className="text-black"> "{searchQuery}"</span>
+                        {products.length
+                          ? "Showing results"
+                          : "No results found"}{" "}
+                        for
+                        <span className="text-black">
+                          {" "}
+                          &quot;{searchQuery}&quot;
+                        </span>
                       </span>
                     ) : (
                       " Our Products"
@@ -85,7 +91,9 @@ export default async function Home({
             </article>
           ) : null}
         </section>
-      ) : null}
+      ) : (
+        <section id="not-found-section"></section>
+      )}
     </div>
   );
 }
