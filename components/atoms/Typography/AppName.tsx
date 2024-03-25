@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Yellowtail } from "next/font/google";
-import { APP_NAME } from "@/utils/constants";
 
 const yellowtail = Yellowtail({
   weight: "400",
@@ -13,27 +12,14 @@ export default function AppName({}: Props) {
   return (
     <Link
       href="/"
-      className="group flex cursor-pointer items-center justify-center gap-x-2 text-xl"
+      className="group flex cursor-pointer items-baseline justify-center text-3xl font-extrabold"
     >
-      <span
-        className={`${yellowtail.className} text-red-500 group-hover:text-red-700`}
-        style={{
-          transform: "rotate(342deg) translate(5px,-5px)",
-          fontSize: "30px",
-        }}
-      >
-        {APP_NAME.split("&")[0]}
-      </span>
-      &
-      <span
-        className={`${yellowtail.className} text-blue-500 group-hover:text-blue-700`}
-        style={{
-          transform: "rotate(342deg) translateX(-10px)",
-          fontSize: "30px",
-        }}
-      >
-        {APP_NAME.split("&")[1]}
-      </span>
+      <div className={`text-primary group-hover:text-red-500`}>G</div>
+      <div className={`text-black`}>lamr</div>
+      {/* <span className={`text-[2rem] text-primary group-hover:text-black`}>
+        .
+      </span> */}
+      <div className="h-[8px] w-[8px] rounded-full bg-primary group-hover:bg-red-500" />
     </Link>
   );
 }
