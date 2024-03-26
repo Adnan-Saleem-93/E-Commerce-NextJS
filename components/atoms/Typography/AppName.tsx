@@ -1,10 +1,4 @@
 import Link from "next/link";
-import { Yellowtail } from "next/font/google";
-
-const yellowtail = Yellowtail({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 type Props = {};
 
