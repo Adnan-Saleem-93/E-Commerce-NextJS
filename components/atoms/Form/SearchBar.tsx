@@ -27,7 +27,7 @@ export default function SearchBar({}: Props) {
   };
   return (
     <div className="form-control w-full">
-      <label className="input input-bordered input-primary flex items-center gap-2">
+      <label className="input input-bordered flex items-center gap-2">
         <input
           name={SEARCH_QUERY_INPUT_NAME}
           type="search"
