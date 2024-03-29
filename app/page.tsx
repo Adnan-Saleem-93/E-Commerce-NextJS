@@ -42,7 +42,7 @@ export default async function Home({
   return (
     <div className="flex flex-col items-center justify-between p-4">
       {products.length ? (
-        <section id="products-section" className="flex flex-col gap-y-20">
+        <section id="products-section" className="flex flex-col gap-y-10">
           {!searchQuery && highlightProduct && (
             <article id="product-main" className="w-full">
               <HighlightedProduct product={highlightProduct} />
@@ -89,7 +89,7 @@ export default async function Home({
           ) : null}
         </section>
       ) : (
-        <section id="not-found-section" className="mt-10">
+        <section id="not-found-section" className="mt-4">
           <p className="text-3xl font-semibold">
             {searchQuery ? (
               <span className="text-gray-500">

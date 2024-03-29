@@ -15,6 +15,6 @@
   }
 
   .body-bg {
-    @apply bg-gradient-to-r from-blue-200 to-orange-100;
+    @apply bg-gradient-to-r from-blue-100 to-orange-100/50;
   }
 }
