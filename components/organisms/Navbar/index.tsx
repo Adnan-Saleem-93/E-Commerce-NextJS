@@ -3,7 +3,7 @@ import { getCart } from "@/utils/db/cart";
 import AppName from "@/components/atoms/Typography/AppName";
 import UserAccountMenu from "@/components/molecules/Dropdowns/UserAccountMenu";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import SearchBar from "@/components/atoms/Form/SearchBar";
 
 export default async function Navbar() {

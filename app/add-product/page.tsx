@@ -5,7 +5,7 @@ import FormSubmitButton from "@/components/atoms/Buttons/FormSubmitButton";
 import { Metadata } from "next";
 import { APP_NAME } from "@/utils/constants";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 export const metadata: Metadata = {
   title: `Add Product | ${APP_NAME}`,
