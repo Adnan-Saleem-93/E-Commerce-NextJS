@@ -3,6 +3,7 @@
 - **Tailwind CSS and DaisyUI are used for the UI.**
 - **Prisma ORM is used for mapping objects to database and performing CRUD operations.**
 - **MongoDB is used as the Database to store the data of the app.**
+- **NextAuth is used for authentication.**
 
 The project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
