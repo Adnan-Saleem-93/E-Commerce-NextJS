@@ -12,7 +12,7 @@ export default async function Navbar() {
 
   return (
     <nav className="body-bg p-2">
-      <div className="navbar mx-auto box-border rounded-lg bg-base-100 ring-2 ring-sky-300/80">
+      <div className="navbar mx-auto box-border rounded-lg bg-base-100">
         <div className="w-1/3 flex-1">
           <AppName />
         </div>
