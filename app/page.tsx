@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: `Products | ${APP_NAME}`,
 };
 
+const PAGE_LIMIT: number = 10;
+
 export default async function Home({
   searchParams,
 }: {
@@ -19,7 +21,7 @@ export default async function Home({
 }) {
   const filterBy: string = searchParams ? searchParams[KEYS.FILTER_BY_KEY] : "";
   const searchQuery: string = searchParams ? searchParams[KEYS.SEARCH_KEY] : "";
-  const page: string = searchParams ? searchParams[KEYS.PAGE_KEY] : "";
+  const PAGE: string = searchParams ? searchParams[KEYS.PAGE_KEY] : "";
 
   const filter = filterBy?.split("-")[0] || "";
   const ascOrDesc = filterBy?.split("-")[1] || "asc";
@@ -28,6 +30,8 @@ export default async function Home({
     ...(searchQuery && {
       where: { name: { contains: searchQuery, mode: "insensitive" } },
     }),
+    skip: PAGE ? (Number(PAGE) - 1) * PAGE_LIMIT : 0,
+    take: PAGE_LIMIT,
     orderBy: filter ? { [filter]: ascOrDesc } : { createdAt: "desc" },
   });
 
@@ -53,7 +57,7 @@ export default async function Home({
               <div className="flex w-full items-center justify-between">
                 {pages > 1 && (
                   <div>
-                    <Pagination pages={pages} />
+                    <Pagination totalPages={pages} />
                   </div>
                 )}
                 <div>

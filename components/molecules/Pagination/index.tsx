@@ -5,9 +5,9 @@ import { SearchParamsProps } from "@/utils/types";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
-type Props = { pages: number; searchParams?: SearchParamsProps | null };
+type Props = { totalPages: number; searchParams?: SearchParamsProps | null };
 
-export default function Pagination({ pages, searchParams = null }: Props) {
+export default function Pagination({ totalPages, searchParams = null }: Props) {
   const [activePage, setActivePage] = useState(1);
   const navigation = useRouter();
   const params = useSearchParams();
@@ -21,19 +21,57 @@ export default function Pagination({ pages, searchParams = null }: Props) {
     navigation.push(`/?${newParams}`);
   };
 
+  const showPagination = totalPages > 1;
+  const pagesToShow = showPagination ? 5 : totalPages;
+
+  const renderPageButtons = () => {
+    const pageButtons = [];
+
+    Array.from({ length: pagesToShow }, (_, index) => {
+      return pageButtons.push(
+        <button
+          key={`pagination-key-${index + 1}`}
+          className="btn join-item border-gray-400"
+        >
+          {index + 1}
+        </button>,
+      );
+    });
+
+    if (showPagination) {
+      pageButtons.push(
+        <span key="ellipsis" className="mx-2 text-3xl">
+          ...
+        </span>,
+      );
+      // pageButtons.push(
+      //   <button className="btn join-item">{totalPages - 1}</button>,
+      // );
+      pageButtons.push(
+        <button className="btn join-item border-gray-400">{totalPages}</button>,
+      );
+    }
+
+    return pageButtons;
+  };
+
   return (
-    <div className="join gap-x-1">
-      {Array.from({ length: pages }, (_, index) => {
-        return (
-          <button
-            key={index}
-            className={`btn join-item ${activePage === index + 1 ? "btn-active" : ""}`}
-            onClick={() => setPage(index + 1)}
-          >
-            {index + 1}
-          </button>
-        );
-      })}
+    <div className="join">
+      {/* {Array.from({ length: totalPages }, (_, index) => {
+        if (totalPages < 8) {
+          return (
+            <button
+              key={index}
+              className={`btn join-item ${activePage === index + 1 ? "btn-active" : ""}`}
+              onClick={() => setPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          );
+        } else if (totalPages >= 8 && index <= 5) {
+        }
+      })} */}
+      {renderPageButtons()}
     </div>
   );
 }
