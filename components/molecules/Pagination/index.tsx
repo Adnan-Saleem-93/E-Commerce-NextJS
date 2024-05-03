@@ -1,77 +1,126 @@
 "use client";
 
+import PaginationButton from "@/components/atoms/Pagination/Button";
 import { KEYS } from "@/utils/constants";
 import { SearchParamsProps } from "@/utils/types";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+type PaginationNavProps = {
+  gotoPage: Dispatch<SetStateAction<number>>;
+  canPreviousPage: boolean;
+  canNextPage: boolean;
+  pageCount: number;
+  pageIndex: number;
+};
+
+function PaginationNav({
+  gotoPage,
+  canPreviousPage,
+  canNextPage,
+  pageCount,
+  pageIndex,
+}: PaginationNavProps) {
+  const renderPageLinks = useCallback(() => {
+    if (pageCount === 0) return null;
+    const visiblePageButtonCount = 3;
+    let numberOfButtons =
+      pageCount < visiblePageButtonCount ? pageCount : visiblePageButtonCount;
+    const pageIndices = [pageIndex];
+    numberOfButtons--;
+    [...Array(numberOfButtons)].forEach((_item, itemIndex) => {
+      const pageNumberBefore = pageIndices[0] - 1;
+      const pageNumberAfter = pageIndices[pageIndices.length - 1] + 1;
+      if (
+        pageNumberBefore >= 0 &&
+        (itemIndex < numberOfButtons / 2 || pageNumberAfter > pageCount - 1)
+      ) {
+        pageIndices.unshift(pageNumberBefore);
+      } else {
+        pageIndices.push(pageNumberAfter);
+      }
+    });
+    return pageIndices.map((pageIndexToMap) => (
+      <li key={pageIndexToMap}>
+        <PaginationButton
+          content={pageIndexToMap + 1}
+          onClick={() => gotoPage(pageIndexToMap)}
+          active={pageIndex === pageIndexToMap}
+        />
+      </li>
+    ));
+  }, [pageCount, pageIndex, gotoPage]);
+
+  return (
+    <ul className="flex gap-2">
+      <li>
+        <PaginationButton
+          content={
+            <div className="ml-1 flex">
+              <FaChevronLeft size="0.6rem" />
+              <FaChevronLeft size="0.6rem" className="-translate-x-1/2" />
+            </div>
+          }
+          onClick={() => gotoPage(0)}
+          disabled={!canPreviousPage}
+        />
+      </li>
+      {renderPageLinks()}
+      <li>
+        <PaginationButton
+          content={
+            <div className="ml-1 flex">
+              <FaChevronRight size="0.6rem" />
+              <FaChevronRight size="0.6rem" className="-translate-x-1/2" />
+            </div>
+          }
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        />
+      </li>
+    </ul>
+  );
+}
 
 type Props = { totalPages: number; searchParams?: SearchParamsProps | null };
 
 export default function Pagination({ totalPages, searchParams = null }: Props) {
-  const [activePage, setActivePage] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
   const navigation = useRouter();
   const params = useSearchParams();
 
-  const setPage = (page: number) => {
+  const setPage = useCallback(() => {
     const newParams = new URLSearchParams([]);
     params.forEach((value, key) => newParams.append(key, value));
-    setActivePage(page);
 
-    newParams.append(KEYS.PAGE_KEY, page.toString());
+    newParams.forEach(
+      (value, key) => key === KEYS.PAGE_KEY && newParams.delete(key),
+    );
+    newParams.append(KEYS.PAGE_KEY, (pageIndex + 1).toString());
     navigation.push(`/?${newParams}`);
-  };
+  }, [pageIndex]);
 
-  const showPagination = totalPages > 1;
-  const pagesToShow = showPagination ? 5 : totalPages;
+  useEffect(() => {
+    setPage();
+  }, [setPage]);
 
-  const renderPageButtons = () => {
-    const pageButtons = [];
-
-    Array.from({ length: pagesToShow }, (_, index) => {
-      return pageButtons.push(
-        <button
-          key={`pagination-key-${index + 1}`}
-          className="btn join-item border-gray-400"
-        >
-          {index + 1}
-        </button>,
-      );
-    });
-
-    if (showPagination) {
-      pageButtons.push(
-        <span key="ellipsis" className="mx-2 text-3xl">
-          ...
-        </span>,
-      );
-      // pageButtons.push(
-      //   <button className="btn join-item">{totalPages - 1}</button>,
-      // );
-      pageButtons.push(
-        <button className="btn join-item border-gray-400">{totalPages}</button>,
-      );
-    }
-
-    return pageButtons;
-  };
-
+  const pageCount = totalPages;
   return (
-    <div className="join">
-      {/* {Array.from({ length: totalPages }, (_, index) => {
-        if (totalPages < 8) {
-          return (
-            <button
-              key={index}
-              className={`btn join-item ${activePage === index + 1 ? "btn-active" : ""}`}
-              onClick={() => setPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          );
-        } else if (totalPages >= 8 && index <= 5) {
-        }
-      })} */}
-      {renderPageButtons()}
+    <div className="flex flex-wrap gap-3 p-6 py-12">
+      <PaginationNav
+        gotoPage={setPageIndex}
+        canPreviousPage={pageIndex > 0}
+        canNextPage={pageIndex < pageCount - 1}
+        pageCount={pageCount}
+        pageIndex={pageIndex}
+      />
     </div>
   );
 }

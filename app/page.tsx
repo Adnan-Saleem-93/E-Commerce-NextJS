@@ -26,26 +26,34 @@ export default async function Home({
   const filter = filterBy?.split("-")[0] || "";
   const ascOrDesc = filterBy?.split("-")[1] || "asc";
 
+  const SKIP_ITEMS: number = PAGE ? (Number(PAGE) - 1) * PAGE_LIMIT : 0;
+
   const { pagination, data } = await findProductsWithFullCount({
-    ...(searchQuery && {
-      where: { name: { contains: searchQuery, mode: "insensitive" } },
-    }),
-    skip: PAGE ? (Number(PAGE) - 1) * PAGE_LIMIT : 0,
+    where: {
+      ...(searchQuery && {
+        name: { contains: searchQuery, mode: "insensitive" },
+      }),
+      isHighlighted: false || undefined,
+    },
+    skip: SKIP_ITEMS,
     take: PAGE_LIMIT,
     orderBy: filter ? { [filter]: ascOrDesc } : { createdAt: "desc" },
   });
 
-  const highlightProduct: Product | null = data.length > 1 ? data[0] : null;
-  const products: Product[] = searchQuery
-    ? data
-    : data.length > 1
-      ? data.slice(1)
-      : [];
+  const highlightProductData: Product[] | undefined =
+    await prisma?.product.findMany({
+      where: { isHighlighted: true },
+    });
+  const highlightProduct: Product | null = highlightProductData
+    ? highlightProductData[0]
+    : null;
+  const products: Product[] = data?.length ? data : [];
+
   const pages: number = pagination.pages;
 
   return (
     <div className="flex flex-col items-center justify-between p-4">
-      {products.length ? (
+      {products?.length || highlightProduct ? (
         <section id="products-section" className="flex flex-col gap-y-10">
           {!searchQuery && highlightProduct && (
             <article id="product-main" className="w-full">
@@ -100,7 +108,9 @@ export default async function Home({
                 No results found for
                 <span className="text-black"> &quot;{searchQuery}&quot;</span>
               </span>
-            ) : null}
+            ) : (
+              <span className="text-gray-500">No results found</span>
+            )}
           </p>
         </section>
       )}
