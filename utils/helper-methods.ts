@@ -13,7 +13,6 @@ export function debounce<F extends (...args: any[]) => any>(
   return (...args: Parameters<F>) => {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
-      console.log(func);
       func.apply(args);
     }, timeout);
   };

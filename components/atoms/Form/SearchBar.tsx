@@ -1,11 +1,9 @@
 "use client";
 import { KEYS, SEARCH_QUERY_INPUT_NAME } from "@/utils/constants";
-import { env } from "@/utils/env";
 import { debounce } from "@/utils/helper-methods";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-console.log(env);
 type Props = {};
 
 export default function SearchBar({}: Props) {

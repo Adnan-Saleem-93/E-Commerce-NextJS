@@ -19,7 +19,6 @@ export default function FilterProductsSelect({ changeHandler = null }: Props) {
         className="select select-primary w-full max-w-xs"
         defaultValue="createdAt"
         onChange={(e) => {
-          // console.log(e.target.value);
           updateSearchParams(e.target.selectedOptions[0]?.id);
         }}
       >
