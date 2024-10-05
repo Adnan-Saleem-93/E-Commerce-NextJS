@@ -22,7 +22,7 @@ const HighlightedProduct = ({ product }: Props) => {
         <p className="line-clamp-6">{description}</p>
         <Link
           href={`/product/${id}`}
-          className="btn btn-accent btn-block text-white"
+          className="btn btn-primary btn-block text-white"
         >
           Check it Out!
         </Link>

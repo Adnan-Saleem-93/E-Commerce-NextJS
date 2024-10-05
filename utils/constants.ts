@@ -1,4 +1,4 @@
-export const APP_NAME: string = "Glamr.";
+export const APP_NAME: string = "Dots";
 export const SEARCH_QUERY_INPUT_NAME: string = "searchQuery";
 
 export const KEYS = {

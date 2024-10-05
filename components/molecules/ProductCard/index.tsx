@@ -25,7 +25,11 @@ const ProductCard = ({ product }: Props) => {
         className="h-full max-h-60 min-h-60 w-full rounded-xl object-cover hover:shadow-xl"
       />
       <div className="h-1/2 justify-between p-2">
-        <h2 className="card-title">{name}</h2>
+        <div className="card-actions items-center justify-between">
+          <h2 className="card-title">{name}</h2>
+
+          <PriceTag price={price} className="text-xl font-bold text-accent" />
+        </div>
         {isNew && (
           <p className="badge badge-warning max-h-6 min-h-6 text-white">NEW!</p>
         )}
@@ -33,7 +37,6 @@ const ProductCard = ({ product }: Props) => {
 
         <div className="card-actions items-center justify-between">
           <RatingOverview rating={rating} />
-          <PriceTag price={price} className="text-xl font-bold" />
         </div>
       </div>
     </Link>

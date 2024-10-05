@@ -20,8 +20,8 @@ export default function PaginationButton({
       className={`btn join-item border-orange-300/75 ${customClasses} 
         ${
           !disabled
-            ? `${active ? "border-none bg-red-500 text-white" : "bg-white"} hover:bg-red-500 hover:text-white`
-            : "cursor-not-allowed border-gray-400 bg-gray-200 text-red-400 hover:border-gray-400 hover:bg-gray-200"
+            ? `${active ? "border-none bg-primary text-white" : "!border-blue-300 bg-white"} hover:bg-primary hover:text-white`
+            : "cursor-not-allowed !border-blue-300 bg-blue-200 text-red-400 hover:border-blue-300 hover:bg-blue-200"
         }
         `}
       onClick={onClick}
