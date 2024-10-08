@@ -15,16 +15,16 @@ const ProductCard = ({ product }: Props) => {
   return (
     <Link
       href={`/product/${id}`}
-      className="col-span-1 flex min-h-[400px] flex-col gap-y-4"
+      className="group col-span-1 flex min-h-[340px] flex-col gap-y-4 rounded-xl hover:ring-1 hover:ring-primary"
     >
       <Image
         src={imageUrl}
         alt={name.toLowerCase().replaceAll(" ", "-")}
         width={384}
         height={226.75}
-        className="h-full max-h-60 min-h-60 w-full rounded-xl object-cover hover:shadow-xl"
+        className="h-full max-h-60 min-h-60 w-full rounded-xl object-cover"
       />
-      <div className="h-1/2 justify-between p-2">
+      <div className="flex h-1/2 flex-col justify-between gap-y-2 p-2">
         <div className="card-actions items-center justify-between">
           <h2 className="card-title">{name}</h2>
 
@@ -33,7 +33,6 @@ const ProductCard = ({ product }: Props) => {
         {isNew && (
           <p className="badge badge-warning max-h-6 min-h-6 text-white">NEW!</p>
         )}
-        <p className="line-clamp-3 flex-grow-0">{description}</p>
 
         <div className="card-actions items-center justify-between">
           <RatingOverview rating={rating} />

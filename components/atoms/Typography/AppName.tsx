@@ -9,7 +9,7 @@ export default function AppName({}: Props) {
       href="/"
       className="flex cursor-pointer items-baseline justify-center text-3xl font-extrabold"
     >
-      <div className={`text-black hover:text-accent`}>{APP_NAME}</div>
+      <div className={`text-accent hover:text-black`}>{APP_NAME}</div>
     </Link>
   );
 }
