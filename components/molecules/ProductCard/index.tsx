@@ -15,7 +15,7 @@ const ProductCard = ({ product }: Props) => {
   return (
     <Link
       href={`/product/${id}`}
-      className="group col-span-1 flex min-h-[340px] flex-col gap-y-4 rounded-xl hover:ring-1 hover:ring-primary"
+      className="group col-span-1 flex min-h-[340px] flex-col gap-y-4 rounded-xl hover:bg-base-200"
     >
       <Image
         src={imageUrl}
