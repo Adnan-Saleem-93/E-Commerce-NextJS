@@ -23,16 +23,18 @@ export const generateMetadata = async ({
   if (!product) notFound();
 
   return {
-    title: `${product.name} | ${APP_NAME}`,
-    description: product.description,
+    title: `${product?.name} | ${APP_NAME}`,
+    description: product?.description,
     openGraph: {
-      images: [{ url: product.imageUrl }],
+      images: [{ url: product?.imageUrl }],
     },
   };
 };
 
 const ProductPage = async ({ params: { id } }: Props) => {
   const product = await getProduct(id);
+  if (!product) notFound();
+
   const { name, imageUrl, description, price } = product;
 
   return (
