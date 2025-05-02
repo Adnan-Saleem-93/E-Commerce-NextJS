@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import prisma from "../utils/db/prisma";
+import prisma from "@/utils/db/prisma";
 
 export const findProductsWithFullCount = async (
   query: Prisma.ProductFindManyArgs,

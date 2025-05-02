@@ -1,5 +1,5 @@
 import { cache } from "react";
-import prisma from "../../../utils/db/prisma";
+import prisma from "@/utils/db/prisma";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { APP_NAME } from "@/utils/constants";

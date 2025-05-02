@@ -7,6 +7,7 @@ import FilterProductsSelect from "@/components/molecules/Form/FilterProductsSele
 import { findProductsWithFullCount } from "./actions";
 import Pagination from "@/components/molecules/Pagination";
 import { SearchParamsProps } from "@/utils/types";
+import prisma from "@/utils/db/prisma";
 
 export const metadata: Metadata = {
   title: `Products | ${APP_NAME}`,

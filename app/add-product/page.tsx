@@ -1,5 +1,5 @@
 import CancelButton from "@/components/atoms/Buttons/CancelButton";
-import prisma from "../../utils/db/prisma";
+import prisma from "@/utils/db/prisma";
 import { redirect } from "next/navigation";
 import FormSubmitButton from "@/components/atoms/Buttons/FormSubmitButton";
 import { Metadata } from "next";
