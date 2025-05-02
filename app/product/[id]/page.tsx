@@ -11,18 +11,16 @@ import { incrementProductQuantity } from "./actions";
 type Props = { params: { id: string } };
 
 const getProduct = cache(async (id: string) => {
-  const product = await prisma.product.findUnique({
+  return await prisma.product.findUnique({
     where: { id },
   });
-  if (!product) notFound();
-
-  return product;
 });
 
 export const generateMetadata = async ({
   params: { id },
 }: Props): Promise<Metadata> => {
   const product = await getProduct(id);
+  if (!product) notFound();
 
   return {
     title: `${product.name} | ${APP_NAME}`,
